@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var poundsTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    let allExercises = ExerciseDataSource().allExercises
     
-    var allExercises: [Exercise] = []
     
     var valueWeight = 0.0
     var valuePounds = 0.0
@@ -29,18 +29,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.weightTextField.delegate = self
         self.poundsTextField.delegate = self
         
-        // dummy object
-        let treadmill = Exercise()
-        treadmill.name = "Treadmill"
-        treadmill.image = #imageLiteral(resourceName: "treadmill@1x.png")
-        treadmill.mets = 8
-        allExercises.append(treadmill)
-        
-        let elliptical = Exercise()
-        elliptical.name = "Elliptical"
-        elliptical.image = #imageLiteral(resourceName: "eliptical@1x.png")
-        elliptical.mets = 9
-        allExercises.append(elliptical)
         
     }
     
@@ -56,10 +44,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allExercises.count
+//        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let weight = weightTextField.text!
+        let pound  = poundsTextField.text!
+        let showHours = !weight.isEmpty && !pound.isEmpty
         
 
         
@@ -77,17 +69,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let kilogram = userWeight / 2.2
         
-        let excercise = allExercises[indexPath.row]
+        let elliptical = allExercises[indexPath.row]
+        
+//        let elliptical = Exercise()
+//        elliptical.name = "Elliptical"
+//        elliptical.image = #imageLiteral(resourceName: "eliptical@1x.png")
+//        elliptical.mets = 9
 
         // equation (3500/METS)/kg = Time in hours
-        let timeInHours = Double(3500/excercise.mets) / Double(kilogram) * poundsBurn
+        let timeInHours = Double(3500/elliptical.mets) / Double(kilogram) * poundsBurn
         
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
         
-        cell.textLabel?.text = excercise.name
-        cell.detailTextLabel?.text = "\(timeInHours)"
-        cell.imageView?.image = excercise.image
+        cell.textLabel?.text = elliptical.name
+        cell.detailTextLabel?.text = showHours ? "hours= \(timeInHours)" : ""
+        cell.imageView?.image = elliptical.image
         return cell
         
     }
@@ -98,6 +95,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let text = textField.text!
+//        CharacterSet.decimalDigits.inverted
+//        textField.text = text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+//        return true
         
         //     This Allow only numbers and one decimal point in textFields
         let weightTextHasDecimalSeparator = weightTextField.text?.range(of: ".")

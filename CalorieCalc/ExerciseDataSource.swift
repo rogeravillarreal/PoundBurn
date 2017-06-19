@@ -24,5 +24,18 @@ class ExerciseDataSource {
         elliptical.image = #imageLiteral(resourceName: "eliptical@1x.png")
         elliptical.mets = 9
         allExercises.append(elliptical)
+        
+        let row = Exercise()
+        row.name = "Row"
+        row.image = #imageLiteral(resourceName: "rowing@1x.png")
+        row.mets = 11
+        allExercises.append(row)
+    }
+    
+    // Add function to createExercise()
+    @discardableResult func createExercise() -> Exercise {
+        let newExercise = Exercise()
+        allExercises.append(newExercise)
+        return newExercise
     }
 }

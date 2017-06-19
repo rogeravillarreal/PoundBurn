@@ -6,13 +6,17 @@
 //
 //
 
-import Foundation
+//import Foundation
 import UIKit
 
 class Exercise {
     
     var name = ""
-    var mets = 0
+    var mets = 0.0
     var image: UIImage?
+    
+    func calculateTimeInHours(mets : Double, kilogram : Double, pounds: Double) -> Double {
+      return (3500/mets) / kilogram * pounds
+    }
     
 }

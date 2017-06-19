@@ -52,38 +52,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // if either text fields is empty, set value to 0
         if (weightTextField.text?.isEmpty)! || (poundsTextField.text?.isEmpty)! {
-            valueWeight = 0
-            valuePounds = 0
+            valueWeight = 0.0
+            valuePounds = 0.0
         } else {
             valueWeight = Double(weightTextField.text!)!
             valuePounds = Double(poundsTextField.text!)!
         }
         
-        let userWeight = valueWeight
-        let poundsBurn = valuePounds
-        
-        let kilogram = userWeight / 2.2
+        let kilogram = valueWeight / 2.2
         
         let excercise = allExercises[indexPath.row]
         
-        // equation (3500/METS)/kg = Time in hours
-        let timeInHours = Double(3500/excercise.mets) / Double(kilogram) * poundsBurn
+        let timeInHours = excercise.calculateTimeInHours(mets: excercise.mets, kilogram: kilogram, pounds: valuePounds)
         
         var totalTime = ""
         
         if !timeInHours.isNaN {
-            let hours: Int = Int(timeInHours)
-            let min: Double = timeInHours - Double(hours)
-            let minLeftOver = Int(Double(min) * 60)
-            totalTime = "= \(hours) hour \(minLeftOver) min"
+            totalTime =  displayTotalTime(time: timeInHours)
         }
-
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        
+        //        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
+                                                 for: indexPath)
         cell.textLabel?.text = excercise.name
         cell.detailTextLabel?.text = showHours ? totalTime : ""
         cell.imageView?.image = excercise.image
         return cell
         
+    }
+    
+    func displayTotalTime(time : Double) -> String {
+        let hours: Int = Int(time)
+        let min: Double = time - Double(hours)
+        let minLeftOver = Int(Double(min) * 60)
+        return "= \(hours) hour \(minLeftOver) min"
     }
     
     
@@ -92,27 +94,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         poundsTextField.resignFirstResponder()
     }
     
+    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    //
+    //        //     This Allow only numbers and one decimal point in textFields
+    //        let weightTextHasDecimalSeparator = weightTextField.text?.range(of: ".")
+    //        let poundsTextHasDecimalSeparator = poundsTextField.text?.range(of: ".")
+    //
+    //        let replacementTextHasDecimalSeparator = string.range(of: ".")
+    //
+    //        // This lets one decimal point but also allows alphabetical characters...
+    //        if weightTextHasDecimalSeparator != nil, poundsTextHasDecimalSeparator != nil,
+    //            replacementTextHasDecimalSeparator != nil {
+    //            return false
+    //        } else {
+    //            return true
+    //        }
+    //    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
         
-        //     This Allow only numbers and one decimal point in textFields
-        let weightTextHasDecimalSeparator = weightTextField.text?.range(of: ".")
-        let poundsTextHasDecimalSeparator = poundsTextField.text?.range(of: ".")
+        let components = string.components(separatedBy: inverseSet)
         
-        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        let filtered = components.joined(separator: "")
         
-        // This lets one decimal point but also allows alphabetical characters...
-        if weightTextHasDecimalSeparator != nil, poundsTextHasDecimalSeparator != nil,
-            replacementTextHasDecimalSeparator != nil {
-            return false
-        } else {
+        if filtered == string {
             return true
+        } else {
+            if string == "." {
+                let countdots = textField.text!.components(separatedBy:".").count - 1
+                if countdots == 0 {
+                    return true
+                } else {
+                    if countdots > 0 && string == "." {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }else{
+                return false
+            }
         }
-        
-        //        // Should allow only numbers
-        //        let allowedCharacters = CharacterSet.decimalDigits
-        //        let characterSet = CharacterSet(charactersIn: string)
-        //        return allowedCharacters.isSuperset(of: characterSet)
-        
     }
 }
 

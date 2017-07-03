@@ -10,11 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var poundsTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     let allExercises = ExerciseDataSource().allExercises
+    
+    @IBOutlet var weightLabel: UILabel!
+    @IBOutlet var poundLabel: UILabel!
+    @IBOutlet var stepper: UIStepper!
+    
+    @IBOutlet var weightButton: UIButton!
+    @IBOutlet var poundsButton: UIButton!
+    
     
     var valueWeight = 0.0
     var valuePounds = 0.0
@@ -25,19 +31,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.weightTextField.delegate = self
-        self.poundsTextField.delegate = self
-                
-    }
-    
-    @IBAction func weightEditing(_ sender: Any) {
-        // when weight has been changed update talbeview
-        tableView.reloadData()
-    }
-    
-    @IBAction func poundsEditing(_ sender: Any) {
-        // when pounds has been changed update talbeview
-        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,19 +38,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let weight = weightTextField.text!
-        let pound  = poundsTextField.text!
-        let showHours = !weight.isEmpty && !pound.isEmpty
-        
-        // if either text fields is empty, set value to 0
-        if (weightTextField.text?.isEmpty)! || (poundsTextField.text?.isEmpty)! {
-            valueWeight = 0.0
-            valuePounds = 0.0
-        } else {
-            valueWeight = Double(weightTextField.text!)!
-            valuePounds = Double(poundsTextField.text!)!
-        }
         
         let kilogram = valueWeight / 2.2
         
@@ -71,11 +51,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             totalTime =  displayTotalTime(time: timeInHours)
         }
         
-        //        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
                                                  for: indexPath)
         cell.textLabel?.text = excercise.name
-        cell.detailTextLabel?.text = showHours ? totalTime : ""
+        cell.detailTextLabel?.text = ""
         cell.imageView?.image = excercise.image
         return cell
         
@@ -88,55 +67,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return "= \(hours) hour \(minLeftOver) min"
     }
     
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        weightTextField.resignFirstResponder()
-        poundsTextField.resignFirstResponder()
+    @IBAction func poundsButtonTapped(_ sender: UIButton) {
+        poundLabel.textColor = UIColor.orange
+        weightLabel.textColor = UIColor.white
+        weightButton.isSelected = false
+        sender.isSelected = true
+        print(poundsButton.isSelected)
     }
     
-    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    //
-    //        //     This Allow only numbers and one decimal point in textFields
-    //        let weightTextHasDecimalSeparator = weightTextField.text?.range(of: ".")
-    //        let poundsTextHasDecimalSeparator = poundsTextField.text?.range(of: ".")
-    //
-    //        let replacementTextHasDecimalSeparator = string.range(of: ".")
-    //
-    //        // This lets one decimal point but also allows alphabetical characters...
-    //        if weightTextHasDecimalSeparator != nil, poundsTextHasDecimalSeparator != nil,
-    //            replacementTextHasDecimalSeparator != nil {
-    //            return false
-    //        } else {
-    //            return true
-    //        }
-    //    }
+    @IBAction func weightButtonTapped(_ sender: UIButton) {
+        weightLabel.textColor = UIColor.orange
+        poundLabel.textColor = UIColor.white
+        poundsButton.isSelected = false
+        sender.isSelected = true
+        print(poundsButton.isSelected)
+        
+    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
-        
-        let components = string.components(separatedBy: inverseSet)
-        
-        let filtered = components.joined(separator: "")
-        
-        if filtered == string {
-            return true
-        } else {
-            if string == "." {
-                let countdots = textField.text!.components(separatedBy:".").count - 1
-                if countdots == 0 {
-                    return true
-                } else {
-                    if countdots > 0 && string == "." {
-                        return false
-                    } else {
-                        return true
-                    }
-                }
-            }else{
-                return false
-            }
+    @IBAction func stepperAction(_ sender: UIStepper) {
+        // check to see if button is selected
+        // if it is, do the following:
+        // get integer from text label
+        // add the stepper increment to that integer
+        // set the text label to that number
+        if weightButton.isSelected {
+            stepper.value = Double(weightLabel.text!)! + 1
+            weightLabel.text = String(Int(sender.value))
         }
+        
+        if poundsButton.isSelected {
+            stepper.value = Double(poundLabel.text!)! + 1
+            poundLabel.text = String(Int(sender.value))
+        }
+        
     }
+    
 }
 
 

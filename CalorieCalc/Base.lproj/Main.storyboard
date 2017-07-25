@@ -59,45 +59,61 @@
                                     <constraint firstAttribute="width" constant="39" id="dH8-mb-Pcp"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-KQ-HxX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-KQ-HxX">
                                 <rect key="frame" x="0.0" y="197" width="320" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseTableViewCell" textLabel="jZY-er-7N2" detailTextLabel="TTF-04-gaZ" imageView="Fqi-Sm-gVX" style="IBUITableViewCellStyleValue1" id="DjR-Ql-QfF" customClass="ExerciseTableViewCell" customModule="CalorieCalc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseTableViewCell" rowHeight="50" id="DjR-Ql-QfF" customClass="ExerciseTableViewCell" customModule="CalorieCalc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DjR-Ql-QfF" id="szH-Ka-07c" customClass="ExerciseTableViewCell" customModule="CalorieCalc" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="jZY-er-7N2">
-                                                    <rect key="frame" x="74" y="13" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="fire-circle-3pt" id="Fqi-Sm-gVX">
-                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" id="TTF-04-gaZ">
-                                                    <rect key="frame" x="249.5" y="10" width="55.5" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Wn-pY-72g">
+                                                    <rect key="frame" x="8" y="7" width="296" height="36"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELP-h6-fY2">
+                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="36" id="enq-h0-B3p"/>
+                                                                <constraint firstAttribute="width" constant="36" id="kA1-PK-5s1"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaN-Ai-e55">
+                                                            <rect key="frame" x="44" y="0.0" width="133" height="36"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="hours" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="nhk-46-bQj">
+                                                            <rect key="frame" x="185" y="0.0" width="111" height="36"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ELP-h6-fY2" firstAttribute="leading" secondItem="3Wn-pY-72g" secondAttribute="leading" constant="8" id="1PF-Ru-Muk"/>
+                                                        <constraint firstItem="xaN-Ai-e55" firstAttribute="centerY" secondItem="3Wn-pY-72g" secondAttribute="centerY" id="t6f-an-t8R"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="3Wn-pY-72g" firstAttribute="centerY" secondItem="szH-Ka-07c" secondAttribute="centerY" id="DtV-iY-Pzk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3Wn-pY-72g" secondAttribute="trailing" constant="8" id="i3q-z3-XxT"/>
+                                                <constraint firstItem="3Wn-pY-72g" firstAttribute="leading" secondItem="szH-Ka-07c" secondAttribute="leadingMargin" id="p7p-ax-Xzj"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="exerciseImage" destination="Fqi-Sm-gVX" id="6q5-Hc-I0q"/>
-                                            <outlet property="exerciseName" destination="jZY-er-7N2" id="eTx-af-ZTY"/>
-                                            <outlet property="timeToBurn" destination="TTF-04-gaZ" id="7o0-54-Xkn"/>
+                                            <outlet property="exerciseImage" destination="ELP-h6-fY2" id="qOl-DT-mSd"/>
+                                            <outlet property="exerciseName" destination="xaN-Ai-e55" id="xDX-Qs-uER"/>
+                                            <outlet property="timeToBurn" destination="nhk-46-bQj" id="fPg-cu-RhT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

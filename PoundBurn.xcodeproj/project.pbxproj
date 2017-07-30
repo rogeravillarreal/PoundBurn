@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EE0320681ECA0FEF00E4269B /* CalorieCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0320681ECA0FEF00E4269B /* PoundBurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoundBurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE03206B1ECA0FEF00E4269B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE03206D1ECA0FEF00E4269B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EE0320701ECA0FEF00E4269B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		EE0320691ECA0FEF00E4269B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE0320681ECA0FEF00E4269B /* CalorieCalc.app */,
+				EE0320681ECA0FEF00E4269B /* PoundBurn.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,15 +72,16 @@
 				EE0320741ECA0FEF00E4269B /* LaunchScreen.storyboard */,
 				EE0320771ECA0FEF00E4269B /* Info.plist */,
 			);
-			path = CalorieCalc;
+			name = CalorieCalc;
+			path = PoundBurn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE0320671ECA0FEF00E4269B /* CalorieCalc */ = {
+		EE0320671ECA0FEF00E4269B /* PoundBurn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE03207A1ECA0FEF00E4269B /* Build configuration list for PBXNativeTarget "CalorieCalc" */;
+			buildConfigurationList = EE03207A1ECA0FEF00E4269B /* Build configuration list for PBXNativeTarget "PoundBurn" */;
 			buildPhases = (
 				EE0320641ECA0FEF00E4269B /* Sources */,
 				EE0320651ECA0FEF00E4269B /* Frameworks */,
@@ -90,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = CalorieCalc;
+			name = PoundBurn;
 			productName = CalorieCalc;
-			productReference = EE0320681ECA0FEF00E4269B /* CalorieCalc.app */;
+			productReference = EE0320681ECA0FEF00E4269B /* PoundBurn.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EE0320631ECA0FEF00E4269B /* Build configuration list for PBXProject "CalorieCalc" */;
+			buildConfigurationList = EE0320631ECA0FEF00E4269B /* Build configuration list for PBXProject "PoundBurn" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -124,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE0320671ECA0FEF00E4269B /* CalorieCalc */,
+				EE0320671ECA0FEF00E4269B /* PoundBurn */,
 			);
 		};
 /* End PBXProject section */
@@ -276,9 +277,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CalorieCalc/Info.plist;
+				INFOPLIST_FILE = PoundBurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdrach.CalorieCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdrach.PoundBurn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -288,9 +289,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CalorieCalc/Info.plist;
+				INFOPLIST_FILE = PoundBurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdrach.CalorieCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdrach.PoundBurn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -299,7 +300,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EE0320631ECA0FEF00E4269B /* Build configuration list for PBXProject "CalorieCalc" */ = {
+		EE0320631ECA0FEF00E4269B /* Build configuration list for PBXProject "PoundBurn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE0320781ECA0FEF00E4269B /* Debug */,
@@ -308,7 +309,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE03207A1ECA0FEF00E4269B /* Build configuration list for PBXNativeTarget "CalorieCalc" */ = {
+		EE03207A1ECA0FEF00E4269B /* Build configuration list for PBXNativeTarget "PoundBurn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE03207B1ECA0FEF00E4269B /* Debug */,

@@ -13,6 +13,7 @@
 		EE0320731ECA0FEF00E4269B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0320721ECA0FEF00E4269B /* Assets.xcassets */; };
 		EE0320761ECA0FEF00E4269B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0320741ECA0FEF00E4269B /* LaunchScreen.storyboard */; };
 		EE2891C01ED220F20041726D /* ExerciseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2891BF1ED220F20041726D /* ExerciseDataSource.swift */; };
+		EE2C3EE21F12DD2100E4CF00 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C3EE11F12DD2100E4CF00 /* ExerciseTableViewCell.swift */; };
 		EE94B9891ECA554900AA4A51 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE94B9881ECA554900AA4A51 /* Exercise.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		EE0320751ECA0FEF00E4269B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE0320771ECA0FEF00E4269B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE2891BF1ED220F20041726D /* ExerciseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDataSource.swift; sourceTree = "<group>"; };
+		EE2C3EE11F12DD2100E4CF00 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		EE94B9871ECA2B3D00AA4A51 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		EE94B9881ECA554900AA4A51 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +63,7 @@
 			children = (
 				EE03206B1ECA0FEF00E4269B /* AppDelegate.swift */,
 				EE03206D1ECA0FEF00E4269B /* ViewController.swift */,
+				EE2C3EE11F12DD2100E4CF00 /* ExerciseTableViewCell.swift */,
 				EE03206F1ECA0FEF00E4269B /* Main.storyboard */,
 				EE2891BF1ED220F20041726D /* ExerciseDataSource.swift */,
 				EE94B9881ECA554900AA4A51 /* Exercise.swift */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE03206E1ECA0FEF00E4269B /* ViewController.swift in Sources */,
+				EE2C3EE21F12DD2100E4CF00 /* ExerciseTableViewCell.swift in Sources */,
 				EE03206C1ECA0FEF00E4269B /* AppDelegate.swift in Sources */,
 				EE2891C01ED220F20041726D /* ExerciseDataSource.swift in Sources */,
 				EE94B9891ECA554900AA4A51 /* Exercise.swift in Sources */,

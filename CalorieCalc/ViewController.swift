@@ -10,14 +10,20 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var poundsTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     let allExercises = ExerciseDataSource().allExercises
     
-    var valueWeight = 0.0
-    var valuePounds = 0.0
+    @IBOutlet var weightLabel: UILabel!
+    @IBOutlet var poundLabel: UILabel!
+    @IBOutlet var stepper: UIStepper!
+    
+    @IBOutlet var weightButton: UIButton!
+    @IBOutlet var poundsButton: UIButton!
+    
+    
+    var valueWeight = 150.0
+    var valuePounds = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.weightTextField.delegate = self
-        self.poundsTextField.delegate = self
-                
-    }
-    
-    @IBAction func weightEditing(_ sender: Any) {
-        // when weight has been changed update talbeview
-        tableView.reloadData()
-    }
-    
-    @IBAction func poundsEditing(_ sender: Any) {
-        // when pounds has been changed update talbeview
-        tableView.reloadData()
+        tableView.backgroundColor = UIColor.clear
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,19 +39,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let weight = weightTextField.text!
-        let pound  = poundsTextField.text!
-        let showHours = !weight.isEmpty && !pound.isEmpty
-        
-        // if either text fields is empty, set value to 0
-        if (weightTextField.text?.isEmpty)! || (poundsTextField.text?.isEmpty)! {
-            valueWeight = 0.0
-            valuePounds = 0.0
-        } else {
-            valueWeight = Double(weightTextField.text!)!
-            valuePounds = Double(poundsTextField.text!)!
-        }
         
         let kilogram = valueWeight / 2.2
         
@@ -67,76 +48,78 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         var totalTime = ""
         
-        if !timeInHours.isNaN {
+        if !timeInHours.isNaN && !timeInHours.isInfinite && timeInHours > 0 {
             totalTime =  displayTotalTime(time: timeInHours)
         }
         
-        //        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
-                                                 for: indexPath)
-        cell.textLabel?.text = excercise.name
-        cell.detailTextLabel?.text = showHours ? totalTime : ""
-        cell.imageView?.image = excercise.image
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseTableViewCell",
+                                                       for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
+        cell.exerciseName.text = excercise.name + " = "
+        cell.timeToBurn.text = totalTime
+        cell.exerciseImage.image = excercise.image
+        
         return cell
         
     }
     
     func displayTotalTime(time : Double) -> String {
         let hours: Int = Int(time)
+        
+        let hoursInDecimals = NumberFormatter.localizedString(from: NSNumber(value: hours), number: NumberFormatter.Style.decimal)
+        
         let min: Double = time - Double(hours)
         let minLeftOver = Int(Double(min) * 60)
-        return "= \(hours) hour \(minLeftOver) min"
+        return "\(hoursInDecimals) hr \(minLeftOver) min"
     }
     
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        weightTextField.resignFirstResponder()
-        poundsTextField.resignFirstResponder()
+    @IBAction func poundsButtonTapped(_ sender: UIButton) {
+        
+        let tappedColor = UIColor(red: 85/255, green: 130/255, blue: 176/255, alpha: 1.0)
+        poundsButton.setTitleColor(tappedColor, for: .normal)
+        weightButton.setTitleColor(.white, for: .normal)
+        poundsButton.setBackgroundImage(#imageLiteral(resourceName: "tapped-circle-darkblue-1"), for: .selected)
+        
+        weightButton.isSelected = false
+        sender.isSelected = true
+        stepper.value = valuePounds
     }
     
-    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    //
-    //        //     This Allow only numbers and one decimal point in textFields
-    //        let weightTextHasDecimalSeparator = weightTextField.text?.range(of: ".")
-    //        let poundsTextHasDecimalSeparator = poundsTextField.text?.range(of: ".")
-    //
-    //        let replacementTextHasDecimalSeparator = string.range(of: ".")
-    //
-    //        // This lets one decimal point but also allows alphabetical characters...
-    //        if weightTextHasDecimalSeparator != nil, poundsTextHasDecimalSeparator != nil,
-    //            replacementTextHasDecimalSeparator != nil {
-    //            return false
-    //        } else {
-    //            return true
-    //        }
-    //    }
+    @IBAction func weightButtonTapped(_ sender: UIButton) {
+        
+        let tappedColor = UIColor(red: 85/255, green: 130/255, blue: 176/255, alpha: 1.0)
+        weightButton.setTitleColor(tappedColor, for: .normal)
+        poundsButton.setTitleColor(.white, for: .normal)
+        weightButton.setBackgroundImage(#imageLiteral(resourceName: "tapped-circle-darkblue-1"), for: .selected)
+        poundsButton.isSelected = false
+        sender.isSelected = true
+        stepper.value = valueWeight
+    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
+    @IBAction func stepperAction(_ sender: UIStepper) {
+        // check to see if button is selected
+        // if it is, do the following:
+        // get integer from text label
+        // add the stepper increment to that integer
+        // set the text label to that number
         
-        let components = string.components(separatedBy: inverseSet)
-        
-        let filtered = components.joined(separator: "")
-        
-        if filtered == string {
-            return true
-        } else {
-            if string == "." {
-                let countdots = textField.text!.components(separatedBy:".").count - 1
-                if countdots == 0 {
-                    return true
-                } else {
-                    if countdots > 0 && string == "." {
-                        return false
-                    } else {
-                        return true
-                    }
-                }
-            }else{
-                return false
-            }
+        if weightButton.isSelected {
+            // set weight label to the stepper value
+            valueWeight = sender.value
+            weightButton.setTitle(String(Int(valueWeight)), for: .normal)
+            //            weightLabel.text = String(Int(sender.value))
+            //            valueWeight = Double(weightLabel.text!)!
         }
+        
+        if poundsButton.isSelected {
+            // set pound label to the stepper value
+            //            poundLabel.text = String(Int(sender.value))
+            //            valuePounds = Double(poundLabel.text!)!
+            valuePounds = sender.value
+            poundsButton.setTitle(String(Int(valuePounds)), for: .normal)
+        }
+        tableView.reloadData()
     }
+    
 }
 
 

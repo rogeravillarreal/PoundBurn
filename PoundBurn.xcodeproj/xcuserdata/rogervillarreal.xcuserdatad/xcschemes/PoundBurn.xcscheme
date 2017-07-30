@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EE0320671ECA0FEF00E4269B"
-               BuildableName = "CalorieCalc.app"
-               BlueprintName = "CalorieCalc"
-               ReferencedContainer = "container:CalorieCalc.xcodeproj">
+               BuildableName = "PoundBurn.app"
+               BlueprintName = "PoundBurn"
+               ReferencedContainer = "container:PoundBurn.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE0320671ECA0FEF00E4269B"
-            BuildableName = "CalorieCalc.app"
-            BlueprintName = "CalorieCalc"
-            ReferencedContainer = "container:CalorieCalc.xcodeproj">
+            BuildableName = "PoundBurn.app"
+            BlueprintName = "PoundBurn"
+            ReferencedContainer = "container:PoundBurn.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE0320671ECA0FEF00E4269B"
-            BuildableName = "CalorieCalc.app"
-            BlueprintName = "CalorieCalc"
-            ReferencedContainer = "container:CalorieCalc.xcodeproj">
+            BuildableName = "PoundBurn.app"
+            BlueprintName = "PoundBurn"
+            ReferencedContainer = "container:PoundBurn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EE0320671ECA0FEF00E4269B"
-            BuildableName = "CalorieCalc.app"
-            BlueprintName = "CalorieCalc"
-            ReferencedContainer = "container:CalorieCalc.xcodeproj">
+            BuildableName = "PoundBurn.app"
+            BlueprintName = "PoundBurn"
+            ReferencedContainer = "container:PoundBurn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

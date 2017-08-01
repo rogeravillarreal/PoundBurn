@@ -32,6 +32,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         
         tableView.backgroundColor = UIColor.clear
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

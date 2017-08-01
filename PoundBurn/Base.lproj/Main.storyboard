@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qe6-ur-YjE">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,9 +11,50 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="DCi-8b-yCl">
+            <objects>
+                <viewController id="Qe6-ur-YjE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kEz-oY-gde"/>
+                        <viewControllerLayoutGuide type="bottom" id="DTe-Dn-ewL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xun-kt-dsq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard" translatesAutoresizingMaskIntoConstraints="NO" id="toK-4E-ygb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKt-QL-pzH">
+                                <rect key="frame" x="131.5" y="522" width="58" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="skip &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="TzJ-tY-daR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="toK-4E-ygb" firstAttribute="bottom" secondItem="DTe-Dn-ewL" secondAttribute="top" id="6yp-l3-cs6"/>
+                            <constraint firstItem="wKt-QL-pzH" firstAttribute="centerX" secondItem="Xun-kt-dsq" secondAttribute="centerX" id="AM3-VE-GaO"/>
+                            <constraint firstItem="toK-4E-ygb" firstAttribute="top" secondItem="Xun-kt-dsq" secondAttribute="top" id="RZD-wM-YIk"/>
+                            <constraint firstAttribute="trailing" secondItem="toK-4E-ygb" secondAttribute="trailing" id="RfB-1N-dVZ"/>
+                            <constraint firstItem="DTe-Dn-ewL" firstAttribute="top" secondItem="wKt-QL-pzH" secondAttribute="bottom" constant="10" id="ZSd-1M-bGK"/>
+                            <constraint firstItem="toK-4E-ygb" firstAttribute="leading" secondItem="Xun-kt-dsq" secondAttribute="leading" id="uqc-Aw-aww"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hB9-u4-0m4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-780" y="135.21126760563379"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CalorieCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PoundBurn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -66,10 +107,10 @@
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseTableViewCell" rowHeight="50" id="DjR-Ql-QfF" customClass="ExerciseTableViewCell" customModule="CalorieCalc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseTableViewCell" rowHeight="50" id="DjR-Ql-QfF" customClass="ExerciseTableViewCell" customModule="PoundBurn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DjR-Ql-QfF" id="szH-Ka-07c" customClass="ExerciseTableViewCell" customModule="CalorieCalc" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DjR-Ql-QfF" id="szH-Ka-07c" customClass="ExerciseTableViewCell" customModule="PoundBurn" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -241,6 +282,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Onboard" width="640" height="1136"/>
         <image name="Pound burn Assets.001" width="320" height="568"/>
         <image name="fire-circle-3pt" width="200" height="200"/>
         <image name="fire-tall" width="200" height="200"/>

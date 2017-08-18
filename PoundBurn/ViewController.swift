@@ -20,8 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var weightButton: UIButton!
     @IBOutlet var poundsButton: UIButton!
-    
-    
+        
     var valueWeight = 150.0
     var valuePounds = 1.0
     
@@ -60,6 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.exerciseName.text = excercise.name + " = "
         cell.timeToBurn.text = totalTime
         cell.exerciseImage.image = excercise.image
+        cell.selectionStyle = .none
         
         return cell
         
